@@ -1,0 +1,83 @@
+
+
+a{
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #1a738b;
+    height: 110px;
+    z-index: 10;
+    display: block !important;
+    flex-shrink: 0;
+}
+
+#headerlog{
+    padding-right: 2%;
+    width: 100%;
+    background-color: #124c5c;
+}
+#headertitle{
+    font-size: x-large;
+    font-weight: 800;
+    color:white;
+    position: absolute;
+    left: 2%;
+}
+#headermenu{
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+}
+.menubtn{
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: medium;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #3E5B76;
+    cursor: pointer;
+}
+.menubtn:hover{
+    background-color: aliceblue;
+    color: #555;
+    scale: 1.05;
+}
+.sidemenu{
+    display: none;
+    position: absolute;
+    background-color: #628DB6;
+    align-self: center;
+    border-radius: 5px;
+    padding: 4px;
+    z-index: 1;
+}
+.sidemenu:hover{
+    display: block;
+}
+
+#dropdown:hover + .sidemenu{
+    display: block;
+}
+#sidemenu table{
+    border-spacing:0 5px;
+}
+.sidebtn{
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    font-size: medium;
+    font-weight: 600;
+    color: white;
+    border-left: solid 3px rgb(255, 255, 255);
+}
+.sidebtn:hover{
+    scale: 1.05;
+}

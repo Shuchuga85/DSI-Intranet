@@ -1,0 +1,176 @@
+:root{
+    --light-theme-color: #1a738b;
+    --dark-theme-color: #124c5c;
+    --fieldset-background-color: white;
+    --fieldset-shadow-color: #bbbbbb;
+    --font-color-light: black;
+    --font-color-dark:black;
+}
+:root[theme="dark"]{
+    --fieldset-background-color:rgba(25, 25, 25, 0.4);
+    --fieldset-shadow-color:rgba(25, 25, 25, 0.4);
+    --font-color-light: white;
+    --font-color-dark:black;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: system-ui;
+    overflow-x: hidden;
+}
+:root[theme="dark"] body::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/intranet/design/background_vector.svg");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top:0;
+    left: 0;
+    z-index: -2; /* Ensure the background image stays below the overlay */
+}
+.mobile{
+    display: none;
+    pointer-events: none;
+}
+a{
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+#fullscreen{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#workspace{
+    position: relative;
+    overflow: hidden;
+    color: var(--theme-light-color);
+    height: 100%;
+    overflow-y: auto;
+}
+#mainpanel{
+    position: relative;
+    width: 96%;
+    padding: 2%;
+
+}
+/*
+#workspace{
+    width: 100%;
+    padding: 2% 2% 2% 2%;
+}
+/*
+fieldset{
+    padding: 5px 10px 10px 10px;
+    margin-bottom: 20px;
+    color: black;
+    font-size: large;
+    font-weight: 600;
+    width: 85%;
+}
+.fieldtitle{
+    text-transform: uppercase; 
+    font-weight: 700;
+}
+*/
+#form-pedido{
+    font-size: large;
+}
+fieldset{
+    background-color: var(--fieldset-background-color);
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 3px 6px 4px var(--fieldset-shadow-color);
+    padding: 1% 2% 2% 2%;
+    margin-bottom: 30px;
+    color: var(--font-color-light);
+    font-weight: 600;
+    width: 90%;/*94%*/
+}
+fieldset legend{
+    background-color: var(--fieldset-background-color);
+    padding: 5px 10px;
+    box-shadow: 0px 3px 6px 2px var(--fieldset-shadow-color);
+    border-radius: 10px;
+}
+hr{
+    background-color: darkgrey;
+    height: 1px;
+}
+textarea {
+    vertical-align: top;
+}
+#fieldfoot{
+    display: flex;
+    justify-content: left;
+    width: 90%;
+    padding: 1% 2% 2% 2%;
+}
+#submitbt{
+    font-size:large;
+    font-weight: 700;
+    display: block;
+    padding: 14px 70px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    color: white;
+    background-color: var(--light-theme-color);
+}
+#submitbt:hover{
+    color: black;
+    background-color: #bfbfbf;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.btn-round-icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    border-radius: 200px;
+    background-color: #eeeeee;
+    padding: 8px 20px;
+    font-weight: 600;
+    color: var(--font-dark-color);
+    cursor: pointer;
+}
+
+.btn-round-icon:hover{
+    background-color: white;
+}
+
+.btn-round-icon img{
+    height: 20px;
+    filter: invert(70%);
+    margin-left: 10px;
+}

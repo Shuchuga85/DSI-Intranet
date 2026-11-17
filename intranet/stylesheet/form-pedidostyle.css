@@ -1,0 +1,208 @@
+:root{
+    --background-color: white;
+    --light-theme-color: #1a738b;
+    --dark-theme-color: #124c5c;
+    --outline-colors: black;
+    --fieldset-background-color: white;
+    --fieldset-shadow-color: #bbbbbb;
+    --font-color-light: black;
+    --font-color-dark:black;
+}
+:root[theme="modern"]{
+    --fieldset-background-color:rgba(25, 25, 25, 0.4);
+    --fieldset-shadow-color:rgba(25, 25, 25, 0.4);
+    --font-color-light: white;
+    --font-color-dark:black;
+}
+
+:root[theme="dark"]{
+    --background-color: #313131;
+    --fieldset-background-color: #242424;
+    --fieldset-shadow-color:#242424;
+    --outline-colors: rgb(133, 133, 133);
+    --font-color-light: white;
+    --font-color-dark:black;
+}
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: system-ui;
+    overflow-x: hidden;
+    background-color: var(--background-color);
+}
+:root[theme="modern"] body::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/intranet/design/background_vector.svg");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top:0;
+    left: 0;
+    z-index: -2; /* Ensure the background image stays below the overlay */
+}
+.mobile{
+    display: none;
+    pointer-events: none;
+}
+a{
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+#fullscreen{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#loadingDiv{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#loadingDiv img{
+    height: 150px;
+    filter: brightness(60%) saturate(2);
+}
+
+#workspace{
+    position: relative;
+    overflow: hidden;
+    color: var(--theme-light-color);
+    height: 100%;
+    overflow-y: auto;
+}
+#mainpanel{
+    position: relative;
+    width: 96%;
+    padding: 2%;
+
+}
+/*
+#workspace{
+    width: 100%;
+    padding: 2% 2% 2% 2%;
+}
+/*
+fieldset{
+    padding: 5px 10px 10px 10px;
+    margin-bottom: 20px;
+    color: black;
+    font-size: large;
+    font-weight: 600;
+    width: 85%;
+}
+.fieldtitle{
+    text-transform: uppercase; 
+    font-weight: 700;
+}
+*/
+#form-pedido{
+    font-size: large;
+}
+fieldset{
+    background-color: var(--fieldset-background-color);
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 3px 6px 4px var(--fieldset-shadow-color);
+    padding: 1% 2% 2% 2%;
+    margin-bottom: 30px;
+    color: var(--font-color-light);
+    font-weight: 600;
+    width: 90%;/*94%*/
+}
+fieldset legend{
+    background-color: var(--fieldset-background-color);
+    padding: 5px 10px;
+    box-shadow: 0px 3px 6px 2px var(--fieldset-shadow-color);
+    border-radius: 10px;
+}
+fieldset input{
+    padding: 3px;
+    font-size: medium;
+    background: var(--background-color);
+    border: 1px solid var(--outline-colors);
+    accent-color: var(--dark-theme-color);
+}
+fieldset input[theme="modern"]{
+    background-color: transparent;
+    border: none;
+    border-bottom: 3px solid var(--outline-colors);
+    color: var(--font-color-dark);
+}
+hr{
+    background-color: darkgrey;
+    height: 1px;
+}
+textarea {
+    background-color: var(--background-color);
+    vertical-align: top;
+    font-size: medium;
+    padding: 5px;
+}
+#fieldfoot{
+    display: flex;
+    justify-content: left;
+    width: 90%;
+    padding: 1% 2% 2% 2%;
+}
+#submitbt{
+    font-size:large;
+    font-weight: 700;
+    display: block;
+    padding: 14px 70px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    color: white;
+    background-color: var(--light-theme-color);
+}
+#submitbt:hover{
+    color: black;
+    background-color: #bfbfbf;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+@media only screen and (max-width: 1100px){
+    fieldset{
+       
+        font-size: 10px;
+        max-width: 90%;
+    }
+    .desktop{
+        display: none;
+        pointer-events: none;
+    }
+    .mobile{
+        display: block;
+        pointer-events: all;
+    }
+}

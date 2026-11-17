@@ -1,0 +1,24 @@
+# Local connection settings and secrets
+.env
+.env.*
+!.env.example
+*.local.php
+# Runtime data and generated exports
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.mdb
+*.log
+/intranet/protected/error.txt
+/intranet/protected/result.*
+/intranet/result.*
+/intranet/Template.pdf
+# Backups and editor files
+*.bak
+*.old
+*.zip
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

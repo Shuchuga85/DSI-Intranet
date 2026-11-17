@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+	<title>trash-bin</title>
+	<defs>
+		<image  width="428" height="428" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAawAAAGsAQMAAAC7BgHvAAAAAXNSR0IB2cksfwAAAAZQTFRFAAAA////pdmf3QAAAAJ0Uk5TAP9bkSK1AAADMklEQVR4nO3cUXLaMBAG4IhkprwlMz1AdZP2ZoWbtTeJblDeykxT1zKOtSsk7bKACJ1feUHgL7ElWbLZeN1Dobi/6fV+Xdyi9ObzL2mL4pvfN6QSvJLRfazsZYk9/qG1tycl+/Sb1oaVkrEWqRxH4b0vr6y63ejY1x+s+vObjrH2L/fABdnAq7uXazI+SMrD5HKMj63y6AID+39Z3/Ot71zSeZ40TubGpcO4UBmXReMizDuu1G2XvMCwXs4YL57kAgYGBpazbKWQy7iWuKMVXi7jPO3yhUJT3Phz8j7GvXT52qkpwbv8ckJT9mt3eovENnF8DdSVYWVlhvYfe8BllwW6srUyQ2+P/W1lhkEyDpP7YIO80XHZgd2a3cXgMrK+Z3ffmcs4vXZcA8YVx7hQWZbF3Yt1EbYu+cYLDOPljPHiaS6qyWG5TwUDAwMDAwMDAwMDAwP7COztaantPtObyTYLfvmmYbuhd8pttt283/sPKxazbTO3RBf3a3an3GQxwDos29E75SaLwcv5iIJnYc0mix/Od9UxaD0o2fgn3hsiBq1JU4psboj4sZbFPTv0wBS0Jt8CNFncM8JIx4ns0OxTrFvL4nuEkf4W2aG3pvDzddnUDoSRr7REdqhPm4HN/waRGDlPwcDAwMDAwMDAwMDAwMDAwMDAwMDAwG7M7uKr9huw00MkfeM41mCTMbRlDKQZw3bBm4KEkRlCkvFDQwDUGG41BncfbKFka+DaGCY3BuWrBQwMDAwMDAwMDOxDMNUzlsGDXYupngNdkjDdF1M9C71kiroRUz33645e9GWaB7ZTFqxzmeaZ5pQ8qwdL+axS2yieKi8wzUS5TJPnM8WsEPzFmOI8TfnczmaKEy6lgUtMcQq4wiuZkTRwicmnQJHJg5JkjyO7Kw5KkpktMXl0pbFFmThMgi8xsb9J0r/zmThMSK5AwqSOo0n/CJM6jib9I0zqOJpQjzCp40i3MSZ0XPBlJjQlTbpImXDquMrrdg+wpIvsVzSbkmUmpKzdJsHXWLNNWBpKxpoH5+qVxsHxpIuMtQ4u+Dpr9Jxr1ap7mSWG5Kzellk6z4zVZoY8d+g/1yBkeEZAlioAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Background" href="#img1" x="42" y="42"/>
+</svg>

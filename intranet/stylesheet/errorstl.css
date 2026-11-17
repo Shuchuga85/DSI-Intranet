@@ -1,0 +1,124 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: system-ui;
+    overflow: hidden;
+}
+a{
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+header{
+    position:  relative;
+    background-color: #628DB6;
+    height: 100px;
+}
+#headerlog{
+    padding-right: 2%;
+    width: 100%;
+    background-color: #3E5B76;
+}
+#headertitle{
+    font-size: large;
+    font-weight: 800;
+    color:white;
+    position: absolute;
+    left: 2%;
+}
+#headermenu{
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+}
+.menubtn{
+    background-color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #3E5B76;
+    cursor: pointer;
+}
+.menubtn:hover{
+    background-color: aliceblue;
+    color: #555;
+    scale: 1.05;
+}
+#workspace{
+    color: black;
+    font-weight: 500;
+}
+
+#mainbtn2{
+    border: 2px solid green;
+    border-radius: 25px;
+    background-color: green;
+    font-size: x-large;
+    font-weight: 700;
+    color:white;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+}
+
+#mainbtn2:hover{
+    background-color: white;
+    color: green;
+}
+
+#mainbtn{
+    border: 2px solid #628DB6;
+    border-radius: 25px;
+    background-color: #628DB6;
+    font-size: x-large;
+    font-weight: 700;
+    color:white;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+}
+#mainbtn:hover{
+    background-color: white;
+    color: #628DB6;
+}
+
+.menupanel{
+    margin: auto;
+    display: table;
+}
+
+.logbox{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+#deadpng{
+    height: 25vh;
+}
+
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  @media only screen and (max-width: 1100px){
+  }

@@ -1,0 +1,319 @@
+Manual CyberSculpt - Intranet  
+
+Índice:
+
+Instalação ......................................................... 1
+Guia de administrador ...............................................2
+   1- Funcionamento do acesso (.htaccess) ...........................3
+   2- Funcionamento do login ........................................3
+   3- Funcionamento dos pedidos .....................................4
+   4- Funcionamento dos emails ......................................5
+   5- Funcionamento do documento ....................................5
+   6- Funcionamento das mensagens ...................................6
+   7- Funcionamento das flags .......................................6
+   8- Funcionamento das Preferencias do utilizador ..................6
+   9- Funcionamento das settings ....................................7
+Estrutura do código .................................................7
+
+
+Vitor Rezende 27/06/2024. 
+
+Instalação: 
+
+  
+
+- Trocar os links (caso necessário); 
+
+  
+
+* pdfdownload.php & formprint.php; 
+
+- Trocar as ligações do ficheiro .docx pra .pdf (opcional); 
+
+  
+
+* db 'gestaomaquinas' postgre; 
+
+- Trocar os parâmetros de host em dbconnect.php (opcional); 
+
+- Trocar o email: quem recebe, quem envia, smtp host (obrigatório); 
+
+  
+
+== Dependências ==  
+
+  
+
+. php v7+ (Extensions: php_ldap.dll, php_pdo_pgsql.dll); 
+
+  
+
+. instale php-ldap, pdo, sqlite3, *php-zip(phpword print) Extensions; 
+
+  
+
+. database (default: postgre [host:port,username,pass]); 
+
+  
+
+. apache2/apache .htaccess enabled (in 000-default.conf or apache2.conf); 
+
+  
+
+. Ldap : (host:port, user, pass); 
+
+  
+
+. Writer permissions directory; 
+
+ 
+
+  
+
+Guia de administrador:  
+
+  
+
+Funcionamento do acesso (.htaccess): 
+
+ 
+
+1. Para que o utilizador possa abrir as páginas publicas é preciso estar no escopo de ips do ficheiro “.htaccess” que esta na raiz do programa, alem disso o mesmo faz a formatação do endereço da página e bloqueio de certo ficheiros e pastas para que os utilizadores não as possam abrir. 
+
+ 
+
+Funcionamento do login (protected/intranetlib.php : login()): 
+
+  
+
+1. Quando o utilizador entra suas credenciais o programa tenta validar ao fazer bind com a ldap, se a bind ocorreu normalmente o programa cria um token único e o guarda na sessão "logged" e na base de dados local (protected/sessions.db). 
+
+  
+
+2. A aplicação utiliza os seguintes dados do utilizador depois de fazer o login: nome de conta (samaccountname), nome (givenname), email (mail) e se faz parte de administradores (memberoff = "administrators"). Todos eles são guardados na sessão "loggedinfo". 
+
+Obs: Estes campos não são facilmente alteráveis pois estão em maior parte das páginas exceto o: "memberoff = administrators" que se encontra apenas em protected/intranetlib.php na função de login(). 
+
+  
+
+3. Quando o utilizador ativa a opção "Lembrar-me" ao fazer o login os mesmos dados da sessão são encriptados e guardados em um cookie chamado "remember-me", que sempre que a aplicação abre ou está a correr, atualiza os dados da sessão mantendo-se aberto por um período maior, o cookie está programado para desaparecer após 15 dias se o utilizador não voltar ao programa. 
+
+Obs: Esta opção funciona por navegador, ou seja, se um utilizador fizer o login em dois ou mais navegadores diferentes o programa funcionará normalmente. 
+
+ 
+
+4. Se o utilizador for membro dos administradores consequentemente poderá aceder as páginas de gestão. O Programa cria uma sessão chamada "op" que porta o mesmo token da sessão. 
+
+  
+
+Funcionamento dos pedidos: 
+
+ 
+
+1. Quando o utilizador envia o pedido imediatamente é guardado todos os campos do formulário na base de dados, de seguida se a opção esta ativa o programa envia para o email dos administradores uma mensagem e o template preenchido em anexo, depois o mesmo acontece para o utilizador onde se a função esta ativa é enviada uma mensagem para o mesmo e de seguida uma página com documento para transferir. 
+
+  
+
+2. Após um utilizador preencher e enviar o pedido, o mesmo pode ser encontrado pelo utilizador em seu perfil para rever os dados, transferir ou criar flags para alterar o pedido. 
+
+  
+
+3. O administrador pode ver todos os pedidos ordenados em uma tabela e ao selecionar um deles e redirecionado para a página de gestão onde poderá alterar informações, imprimir, contatar o responsável, apagar, atribuir computador e fazer uma lista de tarefas. 
+
+  
+
+4. Quando o administrador contata o responsável pelo pedido com as funções da aplicação, se as devidas opções de mensagem estiverem ativas o programa envia uma mensagem para o email do responsável e envia uma notificação (guardado internamente em "ntf.db") para o perfil do utilizador na aplicação. 
+
+  
+
+5. O pedido tem automações no campo estado que atualiza para "concluído" quando a lista de tarefas está completa e para "em-processo" quando sofre sua primeira alteração ou quando a lista de tarefa não esta completa. De qualquer maneira o administrador pode escolher o estado. 
+
+  
+
+6. Quando o administrador abre o pedido pela primeira vez a aplicação sugere que antes de abrir a lista de tarefas é suposto criar um computador primeiro. 
+
+  
+
+7. Flags aparecem no pedido quando o responsável pelo pedido deseja alterar ou apagar o pedido e ao fazer precisam escrever uma mensagem para que o administrador possa ler. 
+
+  
+
+ 
+
+Funcionamento dos Emails: 
+
+  
+
+1. A aplicação envia automaticamente vários emails para diferentes locais sendo o principal o email para os administradores que vão tratar do pedido. Quando o pedido é submetido para todos os emails que de estão introduzidos na base de dados dos parâmetros, é enviado uma mensagem a dizer alguns dados como nome da pessoa, email, data e uma copia do documento com os dados preenchidos em anexo. (Pode ser desativado através dos parâmetros na base de dados); 
+
+  
+
+2. Quando o pedido é submetido é enviado também uma mensagem para o email do responsável que o preencheu como um aviso. (Pode ser desativado através dos parâmetros na base de dados, ou pelo próprio utilizador que escolheu ativar a opção de bloqueio de emails no seu perfil). 
+
+  
+
+3. Os outros emails são aqueles escolhidos pelo administrador para contactar o responsável, na própria página com o pedido aberto o administrador pode escolher tipos diferentes de templates para enviar para o utilizador que para além de notificar com os propiás mensagens da aplicação se não estiver bloqueado o responsável também recebe por email uma mensagem. 
+
+  
+
+Funcionamento do Documento:  
+
+  
+
+1. A aplicação preenche o documento nomeado Template.docx nos campos de texto que lá estão, substituindo-os pelos dados que foram enviados para a base de dados. O resultado deste processo é o ficheiro result.docx que é armazenado no diretório temporário do sistema operativo seja ele qual for, e depois é apagado. 
+
+  
+
+Requisitos: o Template pode ser alterado, mas a sintaxe dos campos a preencher deve manter-se, caso for necessário adicionar ou remover campos, terá de fazer uma revisão nos campos da aplicação inteira. Como por exemplo, no formprint.php onde é preenchido o template, nas páginas de pedido onde vão aparecer os dados submetidos e muito mais. 
+
+  
+
+Funcionamento das mensagens: 
+
+  
+
+1. As mensagens da aplicação ficam armazenadas da base de dados local "ntf.db", e servem para facilitar o contato com o responsável pelo pedido. O administrador pode selecionar um tipo de mensagem que pode ser predefinida para atualização de status ou apenas um comentário. 
+
+  
+
+2. A mensagem irá aparecer na página do perfil do utilizador caso for o destinatário das mesmas. Há várias categorias sendo elas comentários, avisos, atualizações de estado ou pedidos. 
+
+  
+
+Funcionamento das Flags:  
+
+  
+
+1. As Flags são iguais as mensagens, porém fazem a comunicação inversa, o responsável pelo pedido pode gerar flags com um texto para orientar o administrador em possíveis alterações, cancelamentos, ou fazer perguntas.  
+
+  
+
+2. Quando uma flag e criada a mesma aparecerá junto ao pedido na página de visualização com a data e com a origem. Para melhorar a indicação dos pedidos com flags irá aparecer um ícone ao lado do pedido na lista principal dos pedidos e o administrador pode filtrar pedidos com a mesma. 
+
+  
+
+Funcionamento das Preferencias do utlizador: 
+
+  
+
+1. Atualmente há 3 funcionalidades nas Preferências sendo elas: bloqueio de emails automático para o email do utilizador, manter-se conectado, ou seja, longas sessões, e idioma preferido, que altera a idioma das páginas por um período maior.  
+
+  
+
+2. As Preferências são guardadas na base de dados local ntf.db.  
+
+  
+
+Funcionamento das Settings: 
+
+  
+
+1. Na página settings apenas o administrador com as credenciais tem acesso e nela poderá fazer as alterações ao nível da aplicação com por exemplo o destino dos emails automáticos, desativar emails, trocar mensagens entre outros. 
+
+  
+
+  
+
+ 
+
+Estrutura do código: 
+
+  
+
+O programa está dividido na seguinte estrutura de pastas:  
+
+  
+
+1. Páginas - estão na pasta principal as páginas em php (ex: "index.php") e em html (ex: "page-404.html"). 
+
+  
+
+2. Imagens ("design/") - estão na pasta design e podem ter diferentes tipos .png , .svg etc. 
+
+  
+
+3. Folha de estilo ("stylesheet/") - estão na pasta stylesheet os ficheiros em css com os estilos das páginas. 
+
+  
+
+4. Scripts em JavaScript ("scripts/") - estão na pasta scripts as funções que cada página precisa para executar algumas tarefas, cada página tem o seu script exceto os scripts gerais que são: "eventlistener.js", "ajax.js", "elementInjection.js", "search_script.js".  Nesta pasta há também o "proxy.php" que faz com que http requests de javascripts redirecionem para os ficheiros em php que estão em pasta bloqueadas pelo httacess. 
+
+  
+
+5. Traduções ("translations/") - estão na pasta translations a tabela "locales.csv" com as frases, e palavras em diferentes línguas que facilmente pode ser editada, alem disso, lá esta o JavaScript que busca pelas propriedades de tradução na página e insere o texto correspondente. 
+
+  
+
+6. Ficheiros Protegidos ("protected/") - na pasta protected estão ficheiros importantes para o funcionamento interno da aplicação que são realizados pelo servidor, lá está a biblioteca com todos as tarefas exclusivas da aplicação em "intranetlib.php", template de emails e template do documento para solicitar um novo utilizador, base de dados para extras como notificações e flags, etc. 
+
+  
+
+7. Bibliotecas ("phpmailer/","phpoffice/") - as pastas phpmailer e phpoffice são bibliotecas open source que está a ser utilizada na aplicação para tarefas como: envio de emails e preenchimento de documentos automáticos. 
+
+  
+
+Oque faz cada ficheiro:  
+
+  
+
+"protected/": 
+
+  
+
+"intranetlib.php" - biblioteca exclusiva do programa para a gestão dos pedidos e outros dados com funções como login(), islogged(), drawlist(), etc. 
+
+"dbconnect.php" - ficheiro com funções base para o programa funcionar que geralmente são repetidas em diferentes ficheiros como por exemplo conectar com a base de dados. 
+
+"refreshsession.php" - similar a função "islogged()" de "intranetlib.php" este apenas contem uma função que será executada pelo JavaScript "ajax.js" para manter a sessão de login atualizada. 
+
+"formprint.php" - função unica que faz o preenchimento do template do pedido. 
+
+"Template.docx" e retorna a versão preenchida ou encaminha para o download(). 
+
+"pdfdownload.php" - função unica que exporta o ficheiro result.docx para o utilizador. 
+
+"popup.php" - classe pronta para utilizar em qualquer página capaz de criar popups/inputbox para o utilizador com um design simples. 
+
+"session.db" - base de dados local em sqlite que apenas guarda os tokens de login. 
+
+ 
+
+"scripts/" :  
+
+ 
+
+"proxy.php" - redireciona pedidos de javascripts para os ficheiros protegidos em php pelo htaccess. 
+
+"ajax.js" - faz um pedido para o servidor correr o ficheiro "refreshsession.php". 
+
+"elementInjection.js" - introduz as metatags de proteção contra ataques em html e javascripts.  
+
+"eventlistener.js" - script responsável por criar eventos para os elementos das páginas uma vez que o programe utiliza metatags para bloquear "in-line scripts". 
+
+"search_script.js" - script com funções de pesquisa em tabelas e organização de tabelas por coluna. 
+
+  
+
+"translations/" : 
+
+  
+
+"localization.js" - responsável por atribuir a cada elemento, com devidas propriedades, seu texto de acordo com o idioma definido pelo utilizador. 
+
+"locales.js" - tabela com as traduções dos textos. 
+
+  
+
+"/": 
+
+  
+
+"logout.php" - apenas remove a sessão do utilizador. 
+
+"error.php" - página que apenas funciona quando ocorre algum erro no programa. 
+
+"editframe.php" - frame de uma página utilizada no funcionamento do programa porem não tem utilizada sozinha. 
+
+ 
+
+ 

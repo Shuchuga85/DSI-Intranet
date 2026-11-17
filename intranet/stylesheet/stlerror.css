@@ -1,0 +1,121 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    font-family: system-ui;
+    overflow: hidden;
+}
+
+
+body::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/intranet/design/background_vector.svg");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    top:0;
+    left: 0;
+    z-index: -2;
+}
+
+a{
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+p{
+    font-size: larger;
+    font-weight: 500;
+}
+
+#fullscreen{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+
+#workspace{
+    width: 100%;
+    height: 100%;
+    padding: 2% 2% 2% 2%;
+    color: white;
+    background: transparent;
+}
+
+#popup .contents{
+    width: 200px;
+    background: #fff;
+    position: absolute;
+    border-radius: 8px;
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    font-weight: 600;
+    top: 40%;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center; 
+    z-index: 2;
+}
+
+#popup button{
+    border: none;
+    background: white;
+    font-weight: 600;
+    color: black;
+    border-radius: 15px;
+    font-size: medium;
+    box-shadow: 2px 2px 5px gray;
+}
+.blocker{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: ' ';
+    background: rgba(0,0,0,.5);
+    z-index: 1;
+}
+
+#mainbtn{
+    border: 2px solid white;
+    border-radius: 25px;
+    background-color: transparent;
+    font-size: x-large;
+    font-weight: 700;
+    color:white;
+    padding: 10px 10px 10px 10px;
+    cursor: pointer;
+}
+
+#mainbtn:hover{
+    background-color: rgba(0,0,0,.2);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media only screen and (max-width: 1100px){
+
+}

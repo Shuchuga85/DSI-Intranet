@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="scripts/elementInjection.js"></script>
+    <link rel="stylesheet" href="/intranet/stylesheet/stlerror.css?v=123">
+    <title>CyberSculpt - Intranet</title>
+</head>
+<body>
+    <div id="fullscreen">
+        <header id="headere">
+            <link rel="stylesheet" href="stylesheet/header.css">
+            <table id="headerlog">
+                <tr>
+                    <td align="right">
+                        <a data-tr="portal" href="/">Portal</a>
+
+                    </td>
+                </tr>
+            </table>
+            
+            <span id="headertitle">Intranet</span>
+            <table id="headermenu" id="desktop">
+                <tr>
+                    <td>
+                        <a dynamic href="/intranet/"><button data-tr="home" class="menubtn">Principal</button></a>
+                    </td>
+                    <td>
+                        <a dynamic href="/intranet/form-pedido.php"><button data-tr="machine_request" class="menubtn" >Solicitar Máquinas</button></a>
+                    </td>
+        
+                    <td>
+                        <a dynamic href="/intranet/profile.php"><button data-tr="profile" class="menubtn" >Perfil</button></a>
+                    </td>
+                </tr>
+            </table>
+        </header>
+        <div id="workspace">
+            <div class="menupanel" style="display: flex; justify-content: center; text-align: center;"> 
+                <div class="logbox">
+                    <img src="/intranet/design/404page.png" id="deadpng" height="200px" style="filter: invert(100%);">
+                    <h2>Page not found. #404</h2>
+                    <p>Please go back, or go to </p><a style="color: white; text-decoration: underline;" href="/intranet/">Intranet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

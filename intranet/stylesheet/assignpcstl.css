@@ -1,0 +1,346 @@
+:root{
+    --background-color: #fff;
+    --background-color-darker: #ebebeb;
+    --theme-light-color: #1a738b;
+    --theme-dark-color: #124c5c;
+    --font-light-color: rgb(75, 75, 75);
+    --font-dark-color: rgb(41, 41, 41);
+    --table-even-color: #e3e4e4;
+    --table-hover-color: #d1ecf5;
+    --button-hover-color: #e2e2e2;
+    --shadow-light-color: rgb(224, 224, 224);
+    --shadow-dark-color: lightgray;
+    --font-size-general: large;
+    --font-size-table: large;
+    --font-size-larger: larger;
+}
+:root[data-theme="dark"]{
+    --background-color: #474747;
+    --background-color-darker: #383838;
+    --shadow-light-color: rgb(36, 36, 36);
+    --shadow-dark-color: rgb(41, 41, 41);
+    --font-light-color: #ffffff;
+    --font-dark-color: #fff;
+    --table-even-color: #505050;
+    --table-hover-color: #656565;
+    --button-hover-color: #505050;
+
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: system-ui;
+    overflow: hidden;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+}
+.mobile{
+    display: none!important;
+    pointer-events: none!important;
+}
+.mobile input{
+    pointer-events: none!important;
+}
+a{
+    font-weight: 500;
+    color: white;
+   
+    text-decoration: none;
+}
+
+#fullscreen{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: none;
+    position: relative;
+    width: 100%;
+    height: 100%;
+   
+}
+
+#workspace{
+    position: relative;
+    overflow: hidden;
+    color: var(--theme-light-color);
+    height: 100%;
+    overflow-y: auto;
+}
+
+#topnav{
+
+    padding: 2% ;
+    color:black;
+    display: flex;
+    z-index: 23;
+    justify-content: left;
+    background-color: white;
+    background: transparent;
+}
+
+#topnav h3{
+    margin: 0;
+}
+#toolbar{
+    background: white;
+    font-size: large;
+    align-items: center;
+    text-align: center;
+    display: block;
+    width: 98%;
+    padding: 1%;
+    border-radius: 15px;
+    box-shadow: 0px 3px 6px 4px var(--shadow-dark-color);
+}
+
+#tool-bar{
+    background: white;
+    font-size: large;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: left;
+    width: 98%;
+    padding: 1%;
+    border-radius: 15px;
+    box-shadow: 0px 3px 6px 4px var(--shadow-dark-color);
+}
+
+
+#toolbar td{
+    padding-right: 10px;
+}
+
+/*
+#fullscreen{
+    width: 100%;
+    height: 100%;
+}
+
+#workspace{
+    overflow: hidden;
+    height: 100%;
+    color: var(--theme-light-color);
+    background: transparent;
+}
+#topnav{
+    width:100%;
+    position: relative;
+    background-color: #ADD8E6;
+    height: 100px;
+    vertical-align: bottom;
+    flex-flow: row nowrap;
+}
+
+#toolbar{
+    position: absolute;
+    bottom: 15px;
+    left: 2%;
+    font-size: large;
+}
+
+.toolbtn{
+    background-color: #fff;
+    border: none;
+    border-radius: 15px;
+    font-weight: 600;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: #3E5B76;
+    cursor: pointer;
+}
+.toolbtn:hover{
+    background-color: aliceblue;
+    color: #555;
+    scale: 1.05;
+}
+*/
+#mainpanel{
+    height: 96%;
+    align-items: center;
+    padding: 2%;
+}
+/*
+fieldset{
+    padding: 5px 10px 10px 10px;
+    margin-bottom: 20px;
+    color: black;
+    font-size: large;
+    font-weight: 600;
+    width: 80%;
+}
+.fieldtitle{
+    text-transform: uppercase; 
+    font-weight: 700;
+}
+*/
+fieldset{
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 3px 6px 4px var(--shadow-dark-color);
+    padding: 1% 2% 2% 2%;
+    margin-bottom: 45px;
+    color: black;
+    font-size: large;
+    font-weight: 600;
+    width: 86%;/*94%*/
+}
+fieldset legend{
+    background-color: white;
+    padding: 5px 10px;
+    box-shadow: 0px 3px 6px 2px var(--shadow-dark-color);
+    border-radius: 10px;
+}
+
+.fieldtitle{
+    text-transform: uppercase;
+    font-weight: 700;
+}
+textarea {
+    vertical-align: top;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+#fieldfoot{
+    display: flex;
+    justify-content: left;
+    width: 90%;
+    padding: 0 2% 2% 2%;
+}
+#submitbt1{
+    font-size:large;
+    font-weight: 700;
+    display: block;
+    padding: 14px 70px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    color: white;
+    background-color: var(--theme-light-color);
+}
+#submitbt1.toolbtn.closed{
+    color: black;
+    background-color: #bfbfbf;
+}
+
+
+  .btn-round-icon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    border-radius: 200px;
+    background-color: #eeeeee;
+    padding: 8px 20px;
+    font-weight: 600;
+    color: var(--font-dark-color);
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.btn-round-icon:hover{
+    background-color: white;
+}
+
+.btn-round-icon img{
+    height: 20px;
+    filter: invert(70%);
+    margin-left: 10px;
+}
+
+.btn-padding-margin{
+    padding: 10px;
+    margin: 5px;
+}
+.btn-padding-margin img{
+    margin: 0px;
+}
+
+.hidetoolbar{
+    z-index: 100;
+}
+
+.passchangebtn{
+    background-color: transparent;
+    border: none;
+    border-radius: 100px;
+    padding: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.passchangebtn img{
+    filter: invert(80%);
+    height: 15px;
+
+}
+.passchangebtn:hover img{
+    scale: 1.3;
+}
+
+.toggle-password {
+    background-color: transparent;
+    border: none;
+    border-radius: 100px;
+    padding: 6px 6px 3px 6px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.toggle-password img{
+    filter: invert(80%);
+    height: 15px;
+    scale: 1.3;
+}
+
+.toggle-password:hover img{
+    scale: 1.7;
+}
+
+
+@media only screen and (max-width: 1100px){
+    fieldset{
+        font-size: 10px;
+        max-width: 90%;
+        min-width: 90%;
+    }
+    fieldset input{
+        font-size: 10px;
+        height: 10px;
+    }
+    .desktop{
+        display: none!important;
+        pointer-events: none!important;
+    }
+    .desktop input{
+        pointer-events: none!important;
+    }
+    .mobile{
+        display: block!important;
+        pointer-events: all !important;
+    }
+    .mobile input{
+        pointer-events: all!important;
+    }
+}

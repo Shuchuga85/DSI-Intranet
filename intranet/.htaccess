@@ -1,0 +1,17 @@
+Order deny,allow
+
+<Files ~ ".(lock|json|txt|docx|mdb|csv)$">
+  Deny from all
+</Files>
+<FilesMatch "\.(htaccess|ini|config|sql|sqlite|bak|zip|exe|sh|log|htpasswd|csv|htgroup)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+<FilesMatch "\.php$">
+  Order Allow,Deny
+  Allow from all
+</FilesMatch>
+
+ErrorDocument 404 /intranet/page-404.html
+ErrorDocument 403 /intranet/page-403.html

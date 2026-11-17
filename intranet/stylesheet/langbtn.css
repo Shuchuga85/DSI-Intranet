@@ -1,0 +1,33 @@
+#languageSelectorContainer {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#languageSelector {
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+#languageSelect {
+    border: none;
+    background: none;
+    padding: 5px;
+    cursor: pointer;
+    outline: none;
+    font-size: medium;
+    accent-color: #124c5c;
+}
+#languageSelect option:hover{
+    background-color: #124c5c;
+}
+
+
+
+
+@media only screen and (max-width: 1100px){
+
+}
